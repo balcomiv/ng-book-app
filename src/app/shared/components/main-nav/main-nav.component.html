@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <h4>Ng Playground</h4>
+  <span class="fill-remaining-space"></span>
+
+  <app-searchable-selector *ngIf="!isResponsive" class="quick-search"></app-searchable-selector>
+
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+      [attr.role]="(isResponsive) ? 'dialog' : 'navigation'"
+      [mode]="(isResponsive) ? 'over' : 'side'"
+      [opened]="!(isResponsive)">
+    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+
+    <mat-nav-list>
+      <app-searchable-selector *ngIf="isResponsive" class="quick-search"></app-searchable-selector>
+      <h3 class="sidenav-menu-title">Forms</h3>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+
+      <h3 class="sidenav-menu-title">Routing</h3>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+
+      <h3 class="sidenav-menu-title">Net Basal</h3>
+      <mat-divider></mat-divider>
+      <a 
+        class="truncatable"
+        mat-list-item 
+        href="https://netbasal.com/set-state-object-when-navigating-in-angular-7-2-b87c5b977bb">Pass Data when Routing</a>
+
+      <h3 class="sidenav-menu-title">Todd Motto</h3>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Link 1</a>
+
+      <h3 class="sidenav-menu-title">CSS Tricks</h3>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/">Link 1</a>
+
+      <h3 class="sidenav-menu-title">Helpful Links</h3>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">RXJS</a>
+      <a mat-list-item href="#">JavaScript/TypeScript</a>
+      <a mat-list-item href="#">Event Loop</a>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>ng-book-app</span>
+    </mat-toolbar> -->
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
